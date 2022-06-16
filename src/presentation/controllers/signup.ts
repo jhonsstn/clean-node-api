@@ -7,11 +7,16 @@ import { HttpRequest } from '../protocols/http'
 // import { HttpResponse } from '../protocols/http'
 
 export class SignUpController implements Controller {
-  constructor (private readonly emailValidator: EmailValidator) { }
+  constructor (private readonly emailValidator: EmailValidator) {}
 
   // TODO: Change the "any" type for "HttpResponse" when the handle method gets a return
   handle (httpRequest: HttpRequest): any {
-    const requiredFields = ['name', 'email', 'password', 'passwordConfirmation']
+    const requiredFields = [
+      'name',
+      'email',
+      'password',
+      'passwordConfirmation'
+    ]
 
     for (const field of requiredFields) {
       if (!httpRequest.body[field]) {
