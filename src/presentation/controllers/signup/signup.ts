@@ -4,7 +4,8 @@ import {
   AddAccount,
   Controller,
   EmailValidator,
-  HttpRequest
+  HttpRequest,
+  HttpResponse
 } from './signup-protocols'
 
 export class SignUpController implements Controller {
@@ -16,8 +17,7 @@ export class SignUpController implements Controller {
     this.addAccount = addAccount
   }
 
-  // TODO: Change the "any" type for "HttpResponse" when the handle method gets a return
-  handle (httpRequest: HttpRequest): any {
+  handle (httpRequest: HttpRequest): HttpResponse {
     try {
       const requiredFields = [
         'name',
@@ -39,7 +39,12 @@ export class SignUpController implements Controller {
         return badRequest(new InvalidParamError('email'))
       }
 
-      this.addAccount.add({ name, email, password })
+      const account = this.addAccount.add({ name, email, password })
+
+      return {
+        statusCode: 200,
+        body: account
+      }
     } catch (error) {
       return serverError()
     }
