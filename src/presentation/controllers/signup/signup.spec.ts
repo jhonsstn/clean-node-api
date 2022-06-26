@@ -32,7 +32,7 @@ const makeAddAccount = (): AddAccount => {
       const fakeAccount = {
         id: 'valid_id',
         name: 'valid_name',
-        email: 'valid_email',
+        email: 'valid_email@mail.com',
         password: 'valid_password'
       }
       return await new Promise((resolve) => resolve(fakeAccount))
@@ -58,7 +58,7 @@ describe('The SignUpController', () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
-        email: 'any_email',
+        email: 'any_email@mail.com',
         password: 'any_password',
         passwordConfirmation: 'any_password'
       }
@@ -87,7 +87,7 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'any_name',
-        email: 'any_email',
+        email: 'any_email@mail.com',
         passwordConfirmation: 'any_password'
       }
     }
@@ -101,7 +101,7 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'any_name',
-        email: 'any_email',
+        email: 'any_email@mail.com',
         password: 'any_password'
       }
     }
@@ -117,7 +117,7 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'any_name',
-        email: 'any_email',
+        email: 'any_email@mail.com',
         password: 'any_password',
         passwordConfirmation: 'invalid_password'
       }
@@ -135,7 +135,7 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'any_name',
-        email: 'invalid_email',
+        email: 'invalid_email@mail.com@mail.com',
         password: 'any_password',
         passwordConfirmation: 'any_password'
       }
@@ -151,13 +151,13 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'any_name',
-        email: 'any_email',
+        email: 'any_email@mail.com',
         password: 'any_password',
         passwordConfirmation: 'any_password'
       }
     }
     await sut.handle(httpRequest)
-    expect(isValidSpy).toHaveBeenCalledWith('any_email')
+    expect(isValidSpy).toHaveBeenCalledWith('any_email@mail.com')
   })
 
   test('should return 500 if EmailValidator throws an error', async () => {
@@ -168,7 +168,7 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'any_name',
-        email: 'any_email',
+        email: 'any_email@mail.com',
         password: 'any_password',
         passwordConfirmation: 'any_password'
       }
@@ -184,7 +184,7 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'any_name',
-        email: 'any_email',
+        email: 'any_email@mail.com',
         password: 'any_password',
         passwordConfirmation: 'any_password'
       }
@@ -192,7 +192,7 @@ describe('The SignUpController', () => {
     await sut.handle(httpRequest)
     expect(addSpy).toHaveBeenCalledWith({
       name: 'any_name',
-      email: 'any_email',
+      email: 'any_email@mail.com',
       password: 'any_password'
     })
   })
@@ -205,7 +205,7 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'any_name',
-        email: 'any_email',
+        email: 'any_email@mail.com',
         password: 'any_password',
         passwordConfirmation: 'any_password'
       }
@@ -220,7 +220,7 @@ describe('The SignUpController', () => {
     const httpRequest = {
       body: {
         name: 'valid_name',
-        email: 'valid_email',
+        email: 'valid_email@mail.com',
         password: 'valid_password',
         passwordConfirmation: 'valid_password'
       }
@@ -230,7 +230,7 @@ describe('The SignUpController', () => {
     expect(httpResponse.body).toEqual({
       id: 'valid_id',
       name: 'valid_name',
-      email: 'valid_email',
+      email: 'valid_email@mail.com',
       password: 'valid_password'
     })
   })
