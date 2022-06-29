@@ -35,7 +35,7 @@ const makeAddAccount = (): AddAccount => {
         email: 'valid_email@mail.com',
         password: 'valid_password'
       }
-      return await new Promise((resolve) => resolve(fakeAccount))
+      return await Promise.resolve(fakeAccount)
     }
   }
   return new AddAccountStub()
@@ -200,7 +200,7 @@ describe('The SignUpController', () => {
   test('should return 500 if AddAccount throws an error', async () => {
     const { sut, addAccountStub } = makeSut()
     jest.spyOn(addAccountStub, 'add').mockImplementationOnce(async () => {
-      return await new Promise((resolve, reject) => reject(new Error()))
+      return await Promise.reject(new Error())
     })
     const httpRequest = {
       body: {
