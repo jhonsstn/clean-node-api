@@ -5,10 +5,16 @@ export const MongoHelper = {
   async connect (uri: string): Promise<void> {
     this.connection = await MongoClient.connect(uri)
   },
+
   async disconnect (): Promise<void> {
     await this.connection.close()
   },
-  async getCollection (name: string): Promise<Collection> {
+  getCollection (name: string): Collection {
     return this.connection.db().collection(name)
+  },
+
+  mapId  (collection: any): any {
+    const { _id, ...collectionWithoutId } = collection
+    return { id: _id.toString(), ...collectionWithoutId }
   }
 }
