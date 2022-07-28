@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "73ebb928-ccba-495b-853a-94cff7c360e1",
+    "colId": "734e6f41-f711-4cf2-bc79-d8bca5e8ccef",
+    "containerId": "",
+    "name": "SignUp",
+    "url": "localhost:5050/api/signup",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-07-27T23:57:34.658Z",
+    "modified": "2022-07-27T23:58:43.548Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Jhon\",\n  \"email\": \"jhonsstn@gmail.com\",\n  \"password\": \"123\",\n  \"passwordConfirmation\": \"123\"\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
