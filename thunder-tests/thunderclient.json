@@ -4,11 +4,11 @@
     "colId": "734e6f41-f711-4cf2-bc79-d8bca5e8ccef",
     "containerId": "",
     "name": "SignUp",
-    "url": "localhost:5050/api/signup",
+    "url": "{{host}}/api/signup",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-07-27T23:57:34.658Z",
-    "modified": "2022-07-27T23:58:43.548Z",
+    "modified": "2022-07-28T20:17:28.665Z",
     "headers": [],
     "params": [],
     "body": {

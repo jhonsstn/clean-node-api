@@ -13,7 +13,7 @@ export const MongoHelper = {
     return this.connection.db().collection(name)
   },
 
-  mapId  (collection: any): any {
+  mapId (collection: any): any {
     const { _id, ...collectionWithoutId } = collection
     return { id: _id.toString(), ...collectionWithoutId }
   }
