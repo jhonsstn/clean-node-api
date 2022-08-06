@@ -1,14 +1,14 @@
-import {
-  Encrypter,
-  AddAccountModel,
-  AccountModel,
-  AddAccountRepository
-} from './db-add-account-protocols'
 import { DbAddAccount } from './db-add-account'
+import {
+  AccountModel,
+  AddAccountModel,
+  AddAccountRepository,
+  Encrypter
+} from './db-add-account-protocols'
 
 const makeEncrypter = (): Encrypter => {
   class EncrypterStub implements Encrypter {
-    async encrypt (password: string): Promise<string> {
+    async encrypt (_password: string): Promise<string> {
       return await Promise.resolve('encrypted_password')
     }
   }
@@ -17,7 +17,7 @@ const makeEncrypter = (): Encrypter => {
 
 const makeAddAccountRepository = (): AddAccountRepository => {
   class AddAccountRepositoryStub implements AddAccountRepository {
-    async add (accountData: AddAccountModel): Promise<AccountModel> {
+    async add (_accountData: AddAccountModel): Promise<AccountModel> {
       const fakeAccount = {
         id: 'valid_id',
         name: 'valid_name',
